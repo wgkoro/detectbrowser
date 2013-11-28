@@ -24,7 +24,7 @@
 		"windows phone"
 	],
 	homepage: "https://github.com/wgkoro/detectbrowser",
-	docs: "",
+	docs: "https://github.com/wgkoro/detectbrowser/blob/master/README.md",
 	demo: "http://zafiel.wingall.com/data/detectbrowser/demo/demo.html",
 	bugs: "https://github.com/wgkoro/detectbrowser/issues"
 }
