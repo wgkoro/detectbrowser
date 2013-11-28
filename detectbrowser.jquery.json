@@ -23,8 +23,8 @@
 		"ipad",
 		"windows phone"
 	],
-	homepage: "",
+	homepage: "https://github.com/wgkoro/detectbrowser",
 	docs: "",
 	demo: "http://zafiel.wingall.com/data/detectbrowser/demo/demo.html",
-	bugs: ""
+	bugs: "https://github.com/wgkoro/detectbrowser/issues"
 }
