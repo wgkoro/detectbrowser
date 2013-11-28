@@ -39,12 +39,14 @@
 			if(! pattern){return}
 
 			this.device_pattern.push(pattern);
+			this.cache	= null;
 		},
 
 		addTabletPattern	: function(pattern){
 			if(! pattern){return}
 
 			this.tablet_pattern.push(pattern);
+			this.cache	= null;
 		},
 
 		detect		: function(){
@@ -101,8 +103,12 @@
 		 * http://googlewebmastercentral-ja.blogspot.jp/2012/11/giving-tablet-users-full-sized-web.html
 		 **/
 		isAndroidTablet	: function(){
-			if(this.ua.match('mobile')){
-				return false;
+			var len	= this.tablet_pattern.length;
+			for(var i=0;i<len;i++){
+				var reg	= new RegExp(this.tablet_pattern[i], 'i');
+				if(this.ua.match(re)){
+					return false;
+				}
 			}
 
 			return true;
