@@ -3,7 +3,7 @@
 	version: "1.0.0",
 	title: "detectBrowser.js",
 	author: {
-		name: "wg.koro",
+		name: "wgkoro",
 		url: "http://zafiel.wingall.com/"
 	},
 	licenses: [
@@ -12,7 +12,7 @@
 			url: "http://opensource.org/licenses/MIT"
 		}
 	],
-	description: "A tool discern browser(IE,Firefox,Chrome...etc) and device(PC,Android,iPhone...) user using.",
+	description: "A tool discern browser (IE,Firefox,Chrome...etc) and device (PC,Android,iPhone...) user using.",
 	keywords: [
 		"jquery",
 		"plugin",

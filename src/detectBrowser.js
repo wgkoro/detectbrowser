@@ -9,7 +9,7 @@
  * - browser (InternetExplorer, Firefox, Chrome, Safari, Opera)
  * - browser version (IE only)
  *
- * Copyright (c) 2013 wg.koro ( http://zafiel.wingall.com/ )
+ * Copyright (c) 2013 wgkoro ( http://zafiel.wingall.com/ )
  *
  * Released under MIT license:
  * http://www.opensource.org/licenses/mit-license.php
