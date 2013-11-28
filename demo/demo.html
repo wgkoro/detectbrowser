@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>DetectBrowser DEMO</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type='text/javascript' src='./detectBrowser.js'></script>
+
+		<style type='text/css'>
+			body{
+				font-size	: 100%;
+				color		: #4D4D4D;
+			}
+			#result{
+				width		: 800px;
+				height		: 200px;
+				line-height	: 135%;
+				font-size	: 100%;
+			}
+		</style>
+
+		<script type='text/javascript'>
+			function detect(){
+				var obj	= $.detectBrowser.detect();
+				var str	= [];
+
+				if(obj.mobile){
+					str.push('mobile: ' +obj.mobile);
+				}
+				else{
+					str.push('mobile: null');
+				}
+
+				if(obj.is_tablet){
+					str.push('is_tablet: true');
+				}
+				else{
+					str.push('is_tablet: false');
+				}
+
+				str.push('browser: ' +obj.browser);
+
+				if(obj.ie_version){
+					str.push('ie_version: ' +obj.ie_version);
+				}
+				else{
+					str.push('ie_version: null');
+				}
+
+				str.push('ua: ' +obj.ua);
+				document.getElementById('result').value	= str.join('\n');
+			}
+		</script>
+    </head>
+    
+	<h3>detectBrowser DEMO</h3>
+
+	<div>
+		<textarea id='result'></textarea><br>
+		<input type='button' value='Detect Browser' onclick='detect()'>
+	</div>
+
+    <body>
+    </body>
+</html>
