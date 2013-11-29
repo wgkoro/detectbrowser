@@ -22,7 +22,7 @@
 		cache	: null,
 		device_pattern		: ['iphone', 'ipad', 'android', 'windows phone'],
 		browser_pattern		: ['firefox', 'opera', 'chrome', 'safari', 'msie', 'mozilla'],
-		tablet_pattern		: ['mobile'],
+		tablet_pattern		: [],
 		result		: {
 			mobile		: null,
 			is_tablet	: false,
@@ -103,15 +103,29 @@
 		 * http://googlewebmastercentral-ja.blogspot.jp/2012/11/giving-tablet-users-full-sized-web.html
 		 **/
 		isAndroidTablet	: function(){
+			if(this.checkTabletPattern()){
+				return true;
+			}
+
+			if(! this.ua.match('mobile')){
+				return true;
+			}
+
+			return false;
+		},
+
+		checkTabletPattern	: function(){
 			var len	= this.tablet_pattern.length;
+			if(! len){return false}
+
 			for(var i=0;i<len;i++){
 				var reg	= new RegExp(this.tablet_pattern[i], 'i');
-				if(this.ua.match(re)){
-					return false;
+				if(this.ua.match(reg)){
+					return true;
 				}
 			}
 
-			return true;
+			return false;
 		},
 
 		isIE	: function(){
@@ -139,7 +153,9 @@
 			var len		= this.browser_pattern.length
 			for(var i=0;i<len;i++){
 				var pattern	= this.browser_pattern[i];
-				if(this.ua.match(pattern)){return pattern}
+				if(this.ua.match(pattern)){
+					return pattern.replace('ms', '');	// Remove strings 'ms' from 'msie'
+				}
 			}
 
 			return 'unknown';
