@@ -1,5 +1,6 @@
 /**
  * detectBrowser.js
+ * Version: 1.0.1
  *
  * A tool discern browser and device user using.
  *
@@ -176,7 +177,28 @@
 		},
 
 		detect	: function(){
-			return methods.detect();
+			var result	= methods.detect();
+			return result;
+		},
+
+		mobile	: function(){
+			return this.detect().mobile;
+		},
+
+		is_tablet	: function(){
+			return this.detect().is_tablet;
+		},
+
+		browser	: function(){
+			return this.detect().browser;
+		},
+
+		ie_version	: function(){
+			return this.detect().ie_version;
+		},
+
+		ua	: function(){
+			return this.detect().ua;
 		}
 	};
 })(jQuery);
