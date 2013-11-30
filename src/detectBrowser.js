@@ -185,7 +185,7 @@
 			return this.detect().mobile;
 		},
 
-		is_tablet	: function(){
+		isTablet	: function(){
 			return this.detect().is_tablet;
 		},
 
@@ -193,7 +193,7 @@
 			return this.detect().browser;
 		},
 
-		ie_version	: function(){
+		ieVersion	: function(){
 			return this.detect().ie_version;
 		},
 

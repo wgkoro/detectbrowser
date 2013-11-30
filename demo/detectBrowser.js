@@ -1,5 +1,6 @@
 /**
  * detectBrowser.js
+ * Version: 1.0.1
  *
  * A tool discern browser and device user using.
  *
@@ -22,7 +23,7 @@
 		cache	: null,
 		device_pattern		: ['iphone', 'ipad', 'android', 'windows phone'],
 		browser_pattern		: ['firefox', 'opera', 'chrome', 'safari', 'msie', 'mozilla'],
-		tablet_pattern		: ['mobile'],
+		tablet_pattern		: [],
 		result		: {
 			mobile		: null,
 			is_tablet	: false,
@@ -39,12 +40,14 @@
 			if(! pattern){return}
 
 			this.device_pattern.push(pattern);
+			this.cache	= null;
 		},
 
 		addTabletPattern	: function(pattern){
 			if(! pattern){return}
 
 			this.tablet_pattern.push(pattern);
+			this.cache	= null;
 		},
 
 		detect		: function(){
@@ -101,11 +104,29 @@
 		 * http://googlewebmastercentral-ja.blogspot.jp/2012/11/giving-tablet-users-full-sized-web.html
 		 **/
 		isAndroidTablet	: function(){
-			if(this.ua.match('mobile')){
-				return false;
+			if(this.checkTabletPattern()){
+				return true;
 			}
 
-			return true;
+			if(! this.ua.match('mobile')){
+				return true;
+			}
+
+			return false;
+		},
+
+		checkTabletPattern	: function(){
+			var len	= this.tablet_pattern.length;
+			if(! len){return false}
+
+			for(var i=0;i<len;i++){
+				var reg	= new RegExp(this.tablet_pattern[i], 'i');
+				if(this.ua.match(reg)){
+					return true;
+				}
+			}
+
+			return false;
 		},
 
 		isIE	: function(){
@@ -133,7 +154,9 @@
 			var len		= this.browser_pattern.length
 			for(var i=0;i<len;i++){
 				var pattern	= this.browser_pattern[i];
-				if(this.ua.match(pattern)){return pattern}
+				if(this.ua.match(pattern)){
+					return pattern.replace('ms', '');	// Remove strings 'ms' from 'msie'
+				}
 			}
 
 			return 'unknown';
@@ -154,7 +177,28 @@
 		},
 
 		detect	: function(){
-			return methods.detect();
+			var result	= methods.detect();
+			return result;
+		},
+
+		mobile	: function(){
+			return this.detect().mobile;
+		},
+
+		is_tablet	: function(){
+			return this.detect().is_tablet;
+		},
+
+		browser	: function(){
+			return this.detect().browser;
+		},
+
+		ie_version	: function(){
+			return this.detect().ie_version;
+		},
+
+		ua	: function(){
+			return this.detect().ua;
 		}
 	};
 })(jQuery);
